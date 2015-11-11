@@ -1,6 +1,6 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['socialShareModule'])
 
-.controller('AppCtrl', function($scope, $stateParams, $state, $http, helperService, $ionicModal, localStorageService, awsService, $rootScope,topicMap) {
+.controller('AppCtrl', function($scope, $stateParams, $state, $http, helperService, $ionicModal, localStorageService, awsService, $rootScope,topicMap,shareService) {
 
   var warned = false;
   var practiceExam = false;
@@ -269,4 +269,20 @@ angular.module('starter.controllers', [])
     awsService.updateScoreForTopics(examTopic, $scope.score);
     $scope.mode.value = 'result';
   }
+  
+  $scope.shareFb = function() {
+		shareService.shareOnFb();
+	}
+	$scope.shareTwitter = function() {
+		shareService.shareOnTwitter();
+	}
+	$scope.shareWhatsapp = function() {
+		shareService.shareOnWhatsapp();
+	}
+	$scope.shareSms = function() {
+		shareService.shareViaSms();
+	}
+	$scope.shareEmail = function() {
+		shareService.shareViaEmail();
+	}
 });

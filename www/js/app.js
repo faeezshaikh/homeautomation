@@ -64,6 +64,14 @@ angular.module('starter', ['ionic', 'starter.controllers','timer','LocalStorageM
         }
       }
     })
+     .state('app.share', {
+      url: '/share',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/share.html'
+        }
+      }
+    })
     .state('app.topics', {
       url: '/topics',
       views: {
