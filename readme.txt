@@ -1,7 +1,16 @@
 Publishing:
 http://ionicframework.com/docs/guide/publishing.html
 
+sudo ionic platform add android
+ionic hooks add (optional)
 cordova build --release android
+sudo ionic build android
+
+Test if socialsharing is working before every update.If not then the cordova socialsharing plugin needs to be added
+
+cordova plugin add https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git
+Ref: http://ngcordova.com/docs/plugins/socialSharing/
+
 
 (Already generated - do not lose - If Key not already present)
 keytool -genkey -v -keystore  awsArch-key.keystore -alias awsArch- -keyalg RSA -keysize 2048 -validity 100000

@@ -299,12 +299,13 @@
     },
      {
         "Id": 30,
-        "Name": "In AWS VPC means: ", 
+        "Name": "Which of the following notification endpoints or clients are supported by Amazon Simple Notification Service?", 
         
         "Options": [
-            { "Id": 1055, "QuestionId": 1010, "Name": "Virtual Public Cloud", "IsAnswer": true },
-            { "Id": 1056, "QuestionId": 1010, "Name": "Virtual Private Cloud", "IsAnswer": false },
-            { "Id": 1057, "QuestionId": 1010, "Name": "Virtually Private Center", "IsAnswer": false }]
+            { "Id": 1055, "QuestionId": 1010, "Name": "Email", "IsAnswer": true },
+            { "Id": 1056, "QuestionId": 1010, "Name": "CloudFront distribution", "IsAnswer": false },
+            { "Id": 1057, "QuestionId": 1010, "Name": "File Transfer Protocol", "IsAnswer": false },
+            { "Id": 1058, "QuestionId": 1010, "Name": "Simple Network Management Protocol", "IsAnswer": false }]
         
     }]
 }
