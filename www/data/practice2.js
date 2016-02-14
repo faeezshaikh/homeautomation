@@ -43,9 +43,9 @@
         "Name": "A corporate web application is deployed within an Amazon VPC, and is connected to the corporate data center via IPSec VPN. The application must authenticate against the on-premise LDAP server. Once authenticated, logged-in users can only access an S3 keyspace specific to the user. Which approach cannot satisfy the objectives?", 
 
         "Options": [
-            { "Id": 1055, "QuestionId": 1010, "Name": "The application authenticates against LDAP. The application then calls the IAM Security Service to login to IAM using the LDAP credentials. The application can use the IAM temporary credentials to access the appropriate S3 bucket. ", "IsAnswer": false },
+            { "Id": 1055, "QuestionId": 1010, "Name": "The application authenticates against LDAP. The application then calls the IAM Security Service to login to IAM using the LDAP credentials. The application can use the IAM temporary credentials to access the appropriate S3 bucket. ", "IsAnswer": true },
             { "Id": 1056, "QuestionId": 1010, "Name": "The application authenticates against LDAP, and retrieves the name of an IAM role associated with the user. The application then calls the IAM Security Token Service to assume that IAM Role. The application can use the temporary credentials to access the appropriate S3 bucket.  ", "IsAnswer": false },
-            { "Id": 1057, "QuestionId": 1010, "Name": "Develop an identity broker which authenticates against LDAP, and then calls IAM Security Token Service to get IAM federated user credentials. The application calls the identity broker to get IAM federated user credentials with access to the appropriate S3 bucket.", "IsAnswer": true }]
+            { "Id": 1057, "QuestionId": 1010, "Name": "Develop an identity broker which authenticates against LDAP, and then calls IAM Security Token Service to get IAM federated user credentials. The application calls the identity broker to get IAM federated user credentials with access to the appropriate S3 bucket.", "IsAnswer": false }]
     },
      {
         "Id": 5,
@@ -167,7 +167,7 @@
     },
      {
         "Id": 17,
-           "Name": "One EC2 instance can have these many Elastic IPs assigned to it:",  
+           "Name": "One EC2 instance can have these many Elastic IPs (per ENI) assigned to it:",  
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "5", "IsAnswer": false },
             { "Id": 1056, "QuestionId": 1010, "Name": "10 ", "IsAnswer": false },
@@ -268,8 +268,8 @@
      "Name": "EC2 instances are launched from Amazon Machine Images (AMIs). A given public AMI:",    
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "can only be used to launch EC2 instances in the same country as the AMI is stored ", "IsAnswer": false },
-            { "Id": 1056, "QuestionId": 1010, "Name": "can be used to launch EC2 instances in any AWS region ", "IsAnswer": true },
-            { "Id": 1057, "QuestionId": 1010, "Name": "can only be used to launch EC2 instances in the same AWS region as the AMI is stored", "IsAnswer": false },
+            { "Id": 1056, "QuestionId": 1010, "Name": "can be used to launch EC2 instances in any AWS region ", "IsAnswer": false },
+            { "Id": 1057, "QuestionId": 1010, "Name": "can only be used to launch EC2 instances in the same AWS region as the AMI is stored", "IsAnswer": true },
             { "Id": 1058, "QuestionId": 1010, "Name": "can only be used to launch EC2 instances in the same AWS availability zone as the AMI is stored", "IsAnswer": false }]
         
     },
@@ -285,12 +285,13 @@
     },
      {
         "Id": 30,
-      "Name": "The default limit on the CloudFormation stacks you can create is :",  
+      "Name": "Which statements about DynamoDB are true? (Pick 2 correct answers)",  
         "Options": [
-            { "Id": 1055, "QuestionId": 1010, "Name": "20", "IsAnswer": true },
-            { "Id": 1056, "QuestionId": 1010, "Name": "50", "IsAnswer": false },
-            { "Id": 1057, "QuestionId": 1010, "Name": "10", "IsAnswer": false },
-            { "Id": 1057, "QuestionId": 1010, "Name": "100", "IsAnswer": false }]
+            { "Id": 1055, "QuestionId": 1010, "Name": "DynamoDB uses a pessimistic locking model", "IsAnswer": false },
+            { "Id": 1056, "QuestionId": 1010, "Name": "DynamoDB uses optimistic concurrency control", "IsAnswer": true },
+            { "Id": 1057, "QuestionId": 1010, "Name": "DynamoDB uses conditional writes for consistency", "IsAnswer": true },
+            { "Id": 1058, "QuestionId": 1010, "Name": "DynamoDB restricts item access during reads", "IsAnswer": false },
+            { "Id": 1059, "QuestionId": 1010, "Name": "DynamoDB restricts item access during writes", "IsAnswer": false }]
         
     }]
 }

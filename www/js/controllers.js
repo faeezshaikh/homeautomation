@@ -48,7 +48,7 @@ angular.module('starter.controllers', ['socialShareModule'])
       practiceExam = true;
 
       if ($scope.showTimer) {
-        $scope.timer = 2400;
+        $scope.timer = 2400;  // 40 minutes for two practice exams
       }
     
       // Show a warning modal first
@@ -58,7 +58,7 @@ angular.module('starter.controllers', ['socialShareModule'])
         $scope.showTimer = true;
  
         if (examTopic == 300) {
-          $scope.timer = 3300;
+          $scope.timer = 4800;  // 80 minutes for final exam
         }
 
       } else {
@@ -145,7 +145,7 @@ angular.module('starter.controllers', ['socialShareModule'])
     // if (question.QuestionTypeId == 1) { 
     question.Options.forEach(function(element, index, array) {
       if (element.Id != option.Id) {
-        element.Selected = false;
+        //element.Selected = false;
         question.Answered = element.Id;
       }
     });
@@ -247,21 +247,15 @@ angular.module('starter.controllers', ['socialShareModule'])
     $scope.score = 0;
 
     $scope.$broadcast('timer-stop');
-    $scope.questions.forEach(function(q, index) {
-      q.Options.forEach(function(option, index, array) {
+   	$scope.questions.forEach(function(q, index) {
+			if ($scope.isCorrect(q) == 'Correct') {
 
-        if (option.IsAnswer === true) {
-          if (option.Selected) {
-            if (option.Selected === false) {
-              $scope.wrong++;
-            }
-          } else {
-            $scope.wrong++;
-          }
+			} else {
+				$scope.wrong++;
+			}
 
-        }
-      });
-    });
+		});
+   
     var correct = $scope.totalQues - $scope.wrong;
     $scope.score = Math.round((Number(correct) / $scope.totalQues) * 100);
     $scope.verdict = ($scope.score > 65) ? 'Pass' : 'Fail';

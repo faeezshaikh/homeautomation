@@ -69,7 +69,7 @@
     },
     {
         "Id": 8,
-        "Name": "Which of this is not an option when configuring a VPC:", 
+        "Name": "Which of this is not an option when configuring a VPC using the wizard:", 
         
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "VPC with a Single Public Subnet Only", "IsAnswer": false },

@@ -35,7 +35,7 @@
     },
     {
         "Id": 4,
-        "Name": "Objects smaller than 128KB will incur charges for Standard-IA storage class:", 
+        "Name": "Objects smaller than 128KB will incur charges for S3-IA storage class:", 
         
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "True", "IsAnswer": true },
@@ -67,8 +67,8 @@
       "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "1 bytes to 5 GB", "IsAnswer": false },
             { "Id": 1056, "QuestionId": 1010, "Name": "100 Kb to 10 GB", "IsAnswer": false },
-            { "Id": 1056, "QuestionId": 1010, "Name": "1 byte to 5 Terabytes", "IsAnswer": true },
-            { "Id": 1056, "QuestionId": 1010, "Name": "0 to 5 TB", "IsAnswer": false }]
+            { "Id": 1056, "QuestionId": 1010, "Name": "0 bytes to 5 Terabytes", "IsAnswer": true },
+            { "Id": 1056, "QuestionId": 1010, "Name": "1 byte to 5 TB", "IsAnswer": false }]
         
     },
     {

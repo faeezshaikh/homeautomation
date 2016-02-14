@@ -396,6 +396,208 @@
             { "Id": 1057, "QuestionId": 1010, "Name": "InnoDB", "IsAnswer": true },
             { "Id": 1058, "QuestionId": 1010, "Name": "CouchDB ", "IsAnswer": false }]
 
+    },
+    {
+        "Id": 41,
+        "Name": "Does S3 provide read-after-write consistency?", 
+
+        "Options": [
+            { "Id": 1055, "QuestionId": 1010, "Name": "No, not for any region", "IsAnswer": false },
+            { "Id": 1056, "QuestionId": 1010, "Name": "Yes, but only for certain regions", "IsAnswer": false },
+            { "Id": 1057, "QuestionId": 1010, "Name": "Yes, but only for new objects", "IsAnswer": true },
+            { "Id": 1058, "QuestionId": 1010, "Name": "Yes, for all regions", "IsAnswer": false }]
+
+    },
+    {
+        "Id": 42,
+       "Name": "What is the maximum size of a single S3 object?", 
+        
+        "Options": [
+            { "Id": 1055, "QuestionId": 1010, "Name": "No such limit", "IsAnswer": false },
+            { "Id": 1056, "QuestionId": 1010, "Name": "5 TB", "IsAnswer": true },
+            { "Id": 1057, "QuestionId": 1010, "Name": "5 GB", "IsAnswer": false },
+            { "Id": 1058, "QuestionId": 1010, "Name": "100 GB", "IsAnswer": false }]
+        
+    },
+   {
+        "Id": 43,
+       "Name": "Is data stored in S3 is always encrypted?", 
+
+        "Options": [
+            { "Id": 1055, "QuestionId": 1010, "Name": "Yes, S3 always encrypts data for security", "IsAnswer": false },
+            { "Id": 1056, "QuestionId": 1010, "Name": "No, there is no such feature", "IsAnswer": false },
+            { "Id": 1057, "QuestionId": 1010, "Name": "Yes, but only when right APIs are called", "IsAnswer": true },
+            { "Id": 1058, "QuestionId": 1010, "Name": "Yes, but only in Gov Cloud datacenters", "IsAnswer": false }]
+
+    },
+     {
+        "Id": 44,
+      "Name": "What is true for S3 buckets (select multiple if more than one is true)?", 
+        "Options": [
+            { "Id": 1055, "QuestionId": 1010, "Name": "Bucket namespace is shared and is global among all AWS users.", "IsAnswer": true },
+            { "Id": 1056, "QuestionId": 1010, "Name": "Bucket names can contain alpha numeric characters", "IsAnswer": true },
+            { "Id": 1057, "QuestionId": 1010, "Name": "Bucket are associated with a region, and all data in a bucket resides in that region", "IsAnswer": true },
+            { "Id": 1058, "QuestionId": 1010, "Name": "Buckets can be transferred from one account to another through API", "IsAnswer": false }]
+
+    },
+     {
+        "Id": 45,
+       "Name": "EBS can always tolerate an Availability Zone failure?", 
+        "Options": [
+            { "Id": 1055, "QuestionId": 1010, "Name": "No, all EBS volume is stored in a single Availability Zone", "IsAnswer": true },
+            { "Id": 1056, "QuestionId": 1010, "Name": "Yes, EBS volume has multiple copies so it should be fine", "IsAnswer": false },
+            { "Id": 1057, "QuestionId": 1010, "Name": "Depends on how it is setup", "IsAnswer": false },
+            { "Id": 1058, "QuestionId": 1010, "Name": "Depends on the Region where EBS volume is initiated", "IsAnswer": false }]
+
+    },
+     {
+        "Id": 46,
+       "Name": "Which of the following benefits does adding Multi-AZ deployment in RDS provide (choose multiple if more than one is true)?", 
+        "Options": [
+            { "Id": 1055, "QuestionId": 1010, "Name": "MultiAZ deployed database can tolerate an Availability Zone failure", "IsAnswer": true },
+            { "Id": 1056, "QuestionId": 1010, "Name": "Decrease latencies if app servers accessing database are in multiple Availability zones", "IsAnswer": false },
+            { "Id": 1057, "QuestionId": 1010, "Name": "Make database access times faster for all app servers", "IsAnswer": false },
+            { "Id": 1058, "QuestionId": 1010, "Name": "Make database more available during maintenance tasks", "IsAnswer": true }]
+
+    },
+     {
+        "Id": 47,
+       "Name": "Which of the following Auto scaling CANNOT do (select multiple if more than one is true)?", 
+        "Options": [
+            { "Id": 1055, "QuestionId": 1010, "Name": "Start up EC2 instances when CPU utilization is above threshold", "IsAnswer": false },
+            { "Id": 1056, "QuestionId": 1010, "Name": "Release EC2 instances when CPU utilization is below threshold", "IsAnswer": false },
+            { "Id": 1057, "QuestionId": 1010, "Name": "Increase the instance size when utilization is above threshold", "IsAnswer": true },
+            { "Id": 1058, "QuestionId": 1010, "Name": "Add more Relational Database Service (RDS) read replicas when utilization is above threshold", "IsAnswer": true }]
+
+    },
+     {
+        "Id": 48,
+       "Name": "What happens to data when an EC2 instance terminates (select multiple if more than one is true)?", 
+        "Options": [
+            { "Id": 1055, "QuestionId": 1010, "Name": "For EBS backed AMI, the EBS volume with operation system on it is preserved", "IsAnswer": false },
+            { "Id": 1056, "QuestionId": 1010, "Name": "For EBS backed AMI, any volume attached other than the OS volume is preserved", "IsAnswer": true },
+            { "Id": 1057, "QuestionId": 1010, "Name": "All the snapshots of the EBS volume with operating system is preserved", "IsAnswer": true },
+            { "Id": 1058, "QuestionId": 1010, "Name": "For S3 backed AMI, all the data in the local (ephemeral) hard drive is deleted", "IsAnswer": true }]
+
+    },
+     {
+        "Id": 49,
+       "Name": "For an EC2 instance launched in a private subnet in VPC, which of the following are the options for it to be able to connect to the internet (assume security groups have proper ports open)?", 
+        "Options": [
+            { "Id": 1055, "QuestionId": 1010, "Name": "Simply attach an elastic IP", "IsAnswer": false },
+            { "Id": 1056, "QuestionId": 1010, "Name": "If there is also a public subnet in the same VPC, a ENI (Elastic Network Interface) can be attached to the instance with the ip address range of the public subnet", "IsAnswer": false },
+            { "Id": 1057, "QuestionId": 1010, "Name": "If there is a public subnet in the same VPC with a NAT instance attached to internet gateway, then a route can be configured from the instance to the NAT", "IsAnswer": true },
+            { "Id": 1058, "QuestionId": 1010, "Name": "There is no way for an instance in private subnet to talk to the internet", "IsAnswer": false }]
+
+    },
+     {
+        "Id": 50,
+       "Name": "When an ELB is setup, what is the best way to route a website’s traffic to it?", 
+        "Options": [
+            { "Id": 1055, "QuestionId": 1010, "Name": "Resolve the ELB name to an ip address  and point the website to that ip address", "IsAnswer": false },
+            { "Id": 1056, "QuestionId": 1010, "Name": "There is no direct way to do so, Route53 has to be used", "IsAnswer": false},
+            { "Id": 1057, "QuestionId": 1010, "Name": "Generate a Alias record for the website pointing to the DNS name of the ELB", "IsAnswer": true }]
+
+    },
+     {
+        "Id": 51,
+       "Name": "An instance is launched into the public subnet of a VPC. Which of the following must be done in order for it to be accessible from the Internet?", 
+        "Options": [
+            { "Id": 1055, "QuestionId": 1010, "Name": "Attach an Elastic IP to the instance", "IsAnswer": true },
+            { "Id": 1056, "QuestionId": 1010, "Name": "Nothing. The instance is accessible from the Internet", "IsAnswer": false},
+            { "Id": 1057, "QuestionId": 1010, "Name": "Launch a NAT instance and route all traffic to it", "IsAnswer": false},
+            { "Id": 1058, "QuestionId": 1010, "Name": "Make an entry in the route table passing all traffic going outside the VPC to the NAT instance", "IsAnswer": false}]
+
+    },
+     {
+        "Id": 52,
+       "Name": "In VPCs with private and public subnets, database servers should ideally be launched into:", 
+        "Options": [
+            { "Id": 1055, "QuestionId": 1010, "Name": "The public subnet", "IsAnswer": false},
+            { "Id": 1056, "QuestionId": 1010, "Name": "The private subnet", "IsAnswer": true},
+            { "Id": 1057, "QuestionId": 1010, "Name": "Either of them", "IsAnswer": false},
+            { "Id": 1058, "QuestionId": 1010, "Name": "Not recommended, they should ideally be launched outside VPC", "IsAnswer": false}]
+
+    },
+     {
+        "Id": 53,
+       "Name": "An instance is connected to an ENI (Elastic Network Interface) in one subnet. What happens when you attach an ENI of a different subnet to this instance?", 
+        "Options": [
+            { "Id": 1055, "QuestionId": 1010, "Name": "The instance follows the rules of the older subnet", "IsAnswer": false},
+            { "Id": 1056, "QuestionId": 1010, "Name": "The instance follows the rules of both the subnets", "IsAnswer": true},
+            { "Id": 1057, "QuestionId": 1010, "Name": "The instance follows the rules of the newer subnet", "IsAnswer": false},
+            { "Id": 1058, "QuestionId": 1010, "Name": "Not possible cannot be connected to 2 ENIs", "IsAnswer": false}]
+
+    },
+     {
+        "Id":54,
+       "Name": "You want to use Route53 to direct your www sub-domain to an elastic load balancer fronting your web servers. What kind of record set should you create?", 
+        "Options": [
+            { "Id": 1055, "QuestionId": 1010, "Name": "A", "IsAnswer": false},
+            { "Id": 1056, "QuestionId": 1010, "Name": "AAAA", "IsAnswer": false},
+            { "Id": 1057, "QuestionId": 1010, "Name": "NS", "IsAnswer": false},
+            { "Id": 1058, "QuestionId": 1010, "Name": "Alias", "IsAnswer": true}]
+
+    },
+     {
+        "Id": 55,
+       "Name": "You have created 4 weighted resource record sets with weights 1, 2, 3 and 4. the 3rd record set is selected by Route53:", 
+        "Options": [
+            { "Id": 1055, "QuestionId": 1010, "Name": "1/7th of the  time", "IsAnswer": false},
+            { "Id": 1056, "QuestionId": 1010, "Name": "3/10th of the time", "IsAnswer": true},
+            { "Id": 1057, "QuestionId": 1010, "Name": "3/7th of the time", "IsAnswer": false},
+            { "Id": 1058, "QuestionId": 1010, "Name": "1/4th of the time", "IsAnswer": false}]
+
+    },
+     {
+        "Id":56,
+       "Name": "Which of the following can be used as an origin server in CloudFront?(Choose 3)", 
+        "Options": [
+            { "Id": 1055, "QuestionId": 1010, "Name": "A webserver running on EC2", "IsAnswer": true},
+            { "Id": 1056, "QuestionId": 1010, "Name": "A webserver running in your own datacenter", "IsAnswer": true},
+            { "Id": 1057, "QuestionId": 1010, "Name": "A RDS instance", "IsAnswer": false},
+            { "Id": 1058, "QuestionId": 1010, "Name": "An Amazon S3 bucket", "IsAnswer": true}]
+
+    },
+     {
+        "Id": 57,
+       "Name": "In CloudFront what happens when content is NOT present at an Edge location and a request is made to it?", 
+        "Options": [
+            { "Id": 1055, "QuestionId": 1010, "Name": "An Error 404 not found is returned", "IsAnswer": false},
+            { "Id": 1056, "QuestionId": 1010, "Name": "CloudFront delivers the content directly from the origin server and stores it in the cache of the edge location", "IsAnswer": true},
+            { "Id": 1057, "QuestionId": 1010, "Name": "The request is kept on hold till content is delivered to the edge location", "IsAnswer": false},
+            { "Id": 1058, "QuestionId": 1010, "Name": "The request is routed to the next closest edge location", "IsAnswer": false}]
+
+    },
+     {
+        "Id": 58,
+       "Name": "In CloudFront what happens when content is NOT present at an Edge location and a request is made to it?", 
+        "Options": [
+            { "Id": 1055, "QuestionId": 1010, "Name": "An Error 404 not found is returned", "IsAnswer": false},
+            { "Id": 1056, "QuestionId": 1010, "Name": "CloudFront delivers the content directly from the origin server and stores it in the cache of the edge location", "IsAnswer": true},
+            { "Id": 1057, "QuestionId": 1010, "Name": "The request is kept on hold till content is delivered to the edge location", "IsAnswer": false},
+            { "Id": 1058, "QuestionId": 1010, "Name": "The request is routed to the next closest edge location", "IsAnswer": false}]
+
+    },
+     {
+        "Id": 59,
+       "Name": "Which of the following is true with respect to serving private content through CloudFront? (Select 3 correct answers)", 
+        "Options": [
+            { "Id": 1055, "QuestionId": 1010, "Name": "Signed URLs can be created to access objects from CloudFront edge locations", "IsAnswer": true},
+            { "Id": 1056, "QuestionId": 1010, "Name": "Direct access to S3 URLs can be removed therefore allowing access only through CloudFront URLs", "IsAnswer": true},
+            { "Id": 1057, "QuestionId": 1010, "Name": "Mark the S3 bucket private and allow access to CloudFront by means of Roles", "IsAnswer": false},
+            { "Id": 1058, "QuestionId": 1010, "Name": "Mark the S3 bucket private and and create an Origin Access Identity to access the objects", "IsAnswer": true}]
+
+    },
+     {
+        "Id": 60,
+       "Name": "You have written a CloudFormation template that creates 1 elastic load balancer fronting 2 EC2 instances. Which section of the template should you edit so that the DNS of the load balancer is returned upon creation of the stack.", 
+        "Options": [
+            { "Id": 1055, "QuestionId": 1010, "Name": "Resources", "IsAnswer": false},
+            { "Id": 1056, "QuestionId": 1010, "Name": "Parameters", "IsAnswer": false},
+            { "Id": 1057, "QuestionId": 1010, "Name": "Outputs", "IsAnswer": true},
+            { "Id": 1058, "QuestionId": 1010, "Name": "Mappings", "IsAnswer": false}]
+
     }
     ]
 }

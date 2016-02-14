@@ -51,7 +51,7 @@
     },
     {
         "Id": 1015,
-        "Name": "EBS volumes are backed by S3 storage", 
+        "Name": "EBS snapshots are backed by S3 storage", 
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "True", "IsAnswer": true },
             { "Id": 1057, "QuestionId": 1010, "Name": "False", "IsAnswer": false }]
