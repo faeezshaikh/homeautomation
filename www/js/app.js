@@ -1,9 +1,4 @@
-// Ionic Starter App
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers','timer','LocalStorageModule'])
 
 .run(function($ionicPlatform) {
@@ -21,23 +16,6 @@ angular.module('starter', ['ionic', 'starter.controllers','timer','LocalStorageM
     }
   });
 })
-.constant('topicMap', {
-    1 : 'data/ec2.js',
-    2 : 'data/s3.js',
-    3 : 'data/dynamoDb.js',
-    4 : 'data/sqs.js',
-    5 : 'data/sns.js',
-    6 : 'data/swf.js',
-    7 : 'data/iam.js',
-    8 : 'data/cf.js',
-    9 : 'data/beanstalk.js',
-    10 : 'data/vpc.js',
-    100 : 'data/practice1.js',
-    200 : 'data/practice2.js',
-    300 : 'data/exam.js'
-
-
-})
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
@@ -48,14 +26,7 @@ angular.module('starter', ['ionic', 'starter.controllers','timer','LocalStorageM
     controller: 'AppCtrl'
   })
 
-  .state('app.ebook', {
-      url: '/ebook',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/ebook.html'
-        }
-      }
-    })
+  
   .state('app.settings', {
       url: '/settings',
       views: {
