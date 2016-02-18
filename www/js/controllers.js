@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['socialShareModule'])
 
-.controller('AppCtrl', function($scope, $stateParams, $state, $http, $ionicModal, localStorageService, awsService, $rootScope,shareService) {
+.controller('AppCtrl', function($scope, $stateParams, $state, $http, $ionicModal, localStorageService, $rootScope,shareService) {
 
 
 
@@ -9,7 +9,7 @@ angular.module('starter.controllers', ['socialShareModule'])
 		  'reorderFlag' : false
   }
 
-  $scope.topics =  [
+  $scope.districts =  [
                                 { title: 'EC2', desc:'', id: 1 ,url:'data/img/green-grid.png'},
                                 { title: 'S3',desc:'',  id: 2 ,url:'data/img/green-grid.png'},
                                 { title: 'DynamoDB', desc:'', id: 3 ,url:'data/img/green-grid.png'},
@@ -23,16 +23,14 @@ angular.module('starter.controllers', ['socialShareModule'])
                               ];
 
 
-  $scope.deleteStation = function(topic) {
-	  console.log('DElETIGN!!',topic.title);
-	  var indx = $scope.topics.indexOf(topic);
-	  console.log($scope.topics.indexOf(topic));
-	  $scope.topics.splice(indx,1);
+  $scope.deleteStation = function(district) {
+	  var indx = $scope.districts.indexOf(district);
+	  $scope.districts.splice(indx,1);
   }
   
-  $scope.moveStation = function(topic,fromIndex,toIndex) {
-	  $scope.topics.splice(fromIndex,1);
-	  $scope.topics.splice(toIndex,0,topic);
+  $scope.moveStation = function(district,fromIndex,toIndex) {
+	  $scope.districts.splice(fromIndex,1);
+	  $scope.districts.splice(toIndex,0,district);
   }
   
 

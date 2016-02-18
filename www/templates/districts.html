@@ -14,8 +14,8 @@
 
     <ion-list  show-reorder="model.reorderFlag" can-swipe="true">
      
-      <ion-item class="item item-thumbnail-left item-icon-right item-remove-animate"  ng-repeat="topic in topics | filter:searchText" href="#/app/topics/{{topic.id}}"> <img ng-src="{{topic.url}}">
-      <h2>{{topic.title}}</h2>
+      <ion-item class="item item-thumbnail-left item-icon-right item-remove-animate"  ng-repeat="district in districts | filter:searchText" href="#/app/districts/{{district.id}}"> <img ng-src="{{district.url}}">
+      <h2>{{district.title}}</h2>
         <p>
          <i class="ion ion-navicon"></i><span>&nbsp;3A-EAST STL</span>
         </p>
@@ -26,14 +26,14 @@
         <i class="icon ion-chevron-right icon-accessory"></i>
 
       <ion-delete-button class="ion-minus-circled" ng-click="deleteStation($index)"></ion-delete-button>
-      <ion-reorder-button class="ion-navicon" on-reorder="moveStation(topic,$fromIndex,$toIndex)"></ion-delete-button>
+      <ion-reorder-button class="ion-navicon" on-reorder="moveStation(district,$fromIndex,$toIndex)"></ion-delete-button>
   
   						<!-- <ion-option-button class="button-light icon ion-heart"></ion-option-button>
                         <ion-option-button class="button-light icon ion-email"></ion-option-button> -->
                        <!--  <ion-option-button class="button-assertive icon ion-trash-a" ng-click="deleteStation($index)"></ion-option-button> -->
                        
-                       <ion-option-button class="button-balanced " ng-click="share(item)"><i class="icon ion-heart"></i></ion-option-button>
-    				   <ion-option-button class="button-assertive " ng-click="deleteStation(topic)"><i class="icon ion-trash-a"></i></ion-option-button>
+                       <ion-option-button class="mycolor" ng-click="share(item)"><i class="icon ion-heart"></i></ion-option-button>
+    				   <ion-option-button class="button-assertive " ng-click="deleteStation(district)"><i class="icon ion-trash-a"></i></ion-option-button>
   
       </ion-item>
 

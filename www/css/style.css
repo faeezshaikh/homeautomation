@@ -2,11 +2,12 @@
   background-color: rgb(36, 147, 60) !important;
 }
 .mycolor {
-	color: rgb(36, 147, 60) !important;
+	background-color: rgb(36, 147, 60) !important;
 }
 .button {
 	color:white;
 }
+
 body {
     font-family: 'Segoe UI', sans-serif;
     margin:auto;

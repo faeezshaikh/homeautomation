@@ -27,11 +27,11 @@ angular.module('starter', ['ionic', 'starter.controllers','timer','LocalStorageM
   })
 
   
-  .state('app.settings', {
-      url: '/settings',
+  .state('app.search', {
+      url: '/search',
       views: {
         'menuContent': {
-          templateUrl: 'templates/settings.html'
+          templateUrl: 'templates/search.html'
         }
       }
     })
@@ -43,24 +43,24 @@ angular.module('starter', ['ionic', 'starter.controllers','timer','LocalStorageM
         }
       }
     })
-    .state('app.topics', {
-      url: '/topics',
+    .state('app.districts', {
+      url: '/districts',
       views: {
         'menuContent': {
-          templateUrl: 'templates/topics.html'
+          templateUrl: 'templates/districts.html'
         }
       }
     })
 
   .state('app.single', {
-    url: '/topics/:topicId',
+    url: '/districts/:districtId',
     views: {
       'menuContent': {
-        templateUrl: 'templates/topic.html',
+        templateUrl: 'templates/district.html',
         controller: 'AppCtrl'
        }
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/topics');
+  $urlRouterProvider.otherwise('/app/districts');
 });
