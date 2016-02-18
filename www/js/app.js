@@ -1,5 +1,5 @@
 
-angular.module('starter', ['ionic', 'starter.controllers','timer','LocalStorageModule'])
+angular.module('starter', ['ionic', 'starter.controllers','timer','LocalStorageModule','ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

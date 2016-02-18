@@ -1,11 +1,12 @@
 angular.module('starter.controllers', ['socialShareModule'])
 
-.controller('AppCtrl', function($scope, $stateParams, $state, $http, $ionicModal, $cordovaToast,localStorageService, $rootScope,shareService,$ionicLoading) {
+.controller('AppCtrl', function($scope, $stateParams,$ionicPlatform, $state, $http, $ionicModal, $cordovaToast,localStorageService, $rootScope,shareService,$ionicLoading) {
 
 	$ionicLoading.show({
       template: 'Loading Districts...'
     });
-	$http.get('http://gobntdvworkmdev/EmprvWebApiServices/api/Substation/GetSubstationDistricts').then(function(resp) {
+	//http://gobntdvworkmdev/EmprvWebApiServices/api/Substation/GetSubstationDistricts
+	$http.get('data/districts.json').then(function(resp) {
 	    console.log('Success', resp);
 	    $scope.districts = resp.data;
 	    
@@ -18,13 +19,18 @@ angular.module('starter.controllers', ['socialShareModule'])
 	    	 $scope.districts = resp.data;
 	    	  $ionicLoading.hide();
 	    	  
-	    	  $cordovaToast
-	    	    .show('Service was down. Loaded Mock Data', 'long', 'center')
-	    	    .then(function(success) {
-	    	      // success
-	    	    }, function (error) {
-	    	      // error
-	    	    });
+	    	  $ionicPlatform.ready(function() {
+	    		  $cordovaToast
+		    	    .show('Service was down. Loaded Mock Data', 'long', 'center')
+		    	    .then(function(success) {
+		    	      // success
+		    	    }, function (error) {
+		    	      // error
+		    	    });
+	    		});
+	    	  
+	    	  
+	    	
 	    	
 	    });
 	  })
