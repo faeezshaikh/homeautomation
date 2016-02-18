@@ -13,6 +13,7 @@ angular.module('starter.controllers', ['socialShareModule'])
     $scope.showTimer = false;
   }
 
+
   /*
    6a. timer for practice not starting from 40.
    6b. Splash screen
@@ -107,6 +108,10 @@ angular.module('starter.controllers', ['socialShareModule'])
   $scope.mode = {
     'value' : 'quiz'
   };
+  $scope.model = {
+		  'deleteFlag' : false,
+		  'reorderFlag' : false
+  }
 
   $scope.topics = awsService.getTopics();
   $scope.mockExams = awsService.getMockExams();
@@ -117,6 +122,18 @@ angular.module('starter.controllers', ['socialShareModule'])
     $scope.modal = modal;
   });
 
+  $scope.deleteStation = function(topic) {
+	  console.log('DElETIGN!!',topic.title);
+	  var indx = $scope.topics.indexOf(topic);
+	  console.log($scope.topics.indexOf(topic));
+	  $scope.topics.splice(indx,1);
+  }
+  
+  $scope.moveStation = function(topic,fromIndex,toIndex) {
+	  $scope.topics.splice(fromIndex,1);
+	  $scope.topics.splice(toIndex,0,topic);
+  }
+  
   //Note: Only those configs are functional which is documented at: http://www.codeproject.com/Articles/860024/Quiz-Application-in-AngularJs
   // Others are work in progress.
   $scope.defaultConfig = {
