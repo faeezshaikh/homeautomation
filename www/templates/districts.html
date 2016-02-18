@@ -2,7 +2,7 @@
   <ion-content>
 
     <div class="bar bar-header item-input-inset">
-    <button class="button button-icon ion-arrow-move" ng-click="model.reorderFlag=!model.reorderFlag;"></button>
+      <button class="button button-icon ion-arrow-move" ng-click="model.reorderFlag=!model.reorderFlag;"></button>
       <label class="item-input-wrapper">
         <i class="icon ion-ios-search placeholder-icon"></i>
         <input type="search" placeholder="Search" ng-model="searchText">
@@ -12,32 +12,26 @@
       </button>
     </div>
 
-    <ion-list  show-reorder="model.reorderFlag" can-swipe="true">
-     
-      <ion-item class="item item-thumbnail-left item-icon-right item-remove-animate"  ng-repeat="district in districts | filter:searchText" href="#/app/districts/{{district.id}}"> <img ng-src="{{district.url}}">
-      <h2>{{district.title}}</h2>
+    <ion-list show-reorder="model.reorderFlag" can-swipe="true">
+
+      <ion-item class="item item-thumbnail-left item-icon-right item-remove-animate" ng-repeat="district in districts | filter:searchText" href="#/app/districts/{{district.id}}"> <img ng-src="data/img/green-grid.png">
+        <h2>{{district.descriptionField}}</h2>
         <p>
-         <i class="ion ion-navicon"></i><span>&nbsp;3A-EAST STL</span>
+          <i class="ion ion-navicon"></i><span>&nbsp;{{district.idField}}</span>
         </p>
-       <p><i class="ion ion-calendar"></i><span>&nbsp;Eff: 01-Jan-1980</span></p> 
-        <p><i class="ion ion-ios-calendar"></i><span>&nbsp;Exp: 12-Dec-2050</span></p> 
-        <!-- <p><i class="ion ion-ios-navigate"></i><span>Upd:</span></p>  -->
-        
+        <p><i class="ion ion-calendar"></i><span>&nbsp;Eff: {{district.effectiveDateField}}</span></p>
+        <p><i class="ion ion-ios-calendar"></i><span>&nbsp;Exp: 12-Dec-2050</span></p>
+
         <i class="icon ion-chevron-right icon-accessory"></i>
 
-      <ion-delete-button class="ion-minus-circled" ng-click="deleteStation($index)"></ion-delete-button>
-      <ion-reorder-button class="ion-navicon" on-reorder="moveStation(district,$fromIndex,$toIndex)"></ion-delete-button>
-  
-  						<!-- <ion-option-button class="button-light icon ion-heart"></ion-option-button>
-                        <ion-option-button class="button-light icon ion-email"></ion-option-button> -->
-                       <!--  <ion-option-button class="button-assertive icon ion-trash-a" ng-click="deleteStation($index)"></ion-option-button> -->
-                       
-                       <ion-option-button class="mycolor" ng-click="share(item)"><i class="icon ion-heart"></i></ion-option-button>
-    				   <ion-option-button class="button-assertive " ng-click="deleteStation(district)"><i class="icon ion-trash-a"></i></ion-option-button>
-  
+        <ion-delete-button class="ion-minus-circled" ng-click="deleteStation($index)"></ion-delete-button>
+        <ion-reorder-button class="ion-navicon" on-reorder="moveStation(district,$fromIndex,$toIndex)"></ion-reorder-button>
+        <ion-option-button class="mycolor" ng-click="clicked=!clicked"><i ng-class="clicked ? 'icon ion-ios-heart-outline' : 'icon ion-heart'"></i></ion-option-button>
+        <ion-option-button class="button-assertive " ng-click="deleteStation(district)"><i class="icon ion-trash-a"></i></ion-option-button>
+
       </ion-item>
 
-    
+
     </ion-list>
   </ion-content>
 </ion-view>
