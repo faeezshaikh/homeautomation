@@ -1,8 +1,9 @@
 angular.module('starter.controllers', ['socialShareModule'])
 
 
-.controller('AppCtrl', function($scope, $stateParams,$ionicPlatform,$cordovaCamera, InvoiceService,$state, $http, substationService,$ionicModal, $cordovaToast,localStorageService, $rootScope,shareService,$ionicLoading) {
+.controller('AppCtrl', function($scope, $stateParams,$ionicPlatform,filterFilter,$cordovaCamera, InvoiceService,$state, $http, substationService,$ionicModal, $cordovaToast,localStorageService, $rootScope,shareService,$ionicLoading) {
 	$scope.favs = [];
+	$scope.count = 9;
 	
 	if(!substationService.getLoadedFlag()) {
 		console.log('Cache empty,calling remote service.');
@@ -11,7 +12,10 @@ angular.module('starter.controllers', ['socialShareModule'])
 		substationService.setLoadedFlag(true);
 	}
 	
-	
+	$scope.filteredDistricts = function() {
+		var filtered = filterFilter($scope.districts, $scope.searchText);
+		return filtered.length;
+	}
 	
 	function callServiceToGetDistricts() {
 		
