@@ -1,4 +1,4 @@
-<ion-view view-title="Districts ({{districts.length}})"> 
+<ion-view view-title="Favorites ({{favs.length}})"> 
   <ion-content>
 
     <div class="bar bar-header item-input-inset">
@@ -13,10 +13,9 @@
       </button>
     </div>
 
-	<ion-refresher pulling-text="Pull to load Districts.." on-refresh="reloadDistricts()"></ion-refresher>
     <ion-list show-reorder="model.reorderFlag" can-swipe="true">
 
-      <ion-item class="item item-thumbnail-left item-icon-right item-remove-animate" ng-repeat="district in districts | filter:searchText" href="#/app/districts/{{district.id}}"> <img ng-src="data/img/green-grid.png">
+      <ion-item class="item item-thumbnail-left item-icon-right item-remove-animate" ng-repeat="district in favs | filter:searchText" href="#/app/districts/{{district.id}}"> <img ng-src="data/img/green-grid.png">
         <h2>{{district.descriptionField}}</h2>
         <p>
           <i class="ion ion-navicon"></i><span>&nbsp;{{district.idField}}</span>
@@ -27,9 +26,8 @@
         <i class="icon ion-chevron-right icon-accessory"></i>
 
         <!-- <ion-delete-button class="ion-minus-circled" ng-click="deleteStation($index)"></ion-delete-button> -->
-        <ion-reorder-button class="ion-navicon" on-reorder="moveStation(district,$fromIndex,$toIndex)"></ion-reorder-button>
-        <ion-option-button class="mycolor" ng-click="addToFavorites(district); clicked=!clicked;"><i ng-class="clicked ? 'icon ion-ios-heart-outline' : 'icon ion-heart'"></i></ion-option-button>
-        <!-- <ion-option-button class="button-assertive " ng-click="deleteStation(district)"><i class="icon ion-trash-a"></i></ion-option-button> -->
+        <ion-reorder-button class="ion-navicon" on-reorder="moveStation(district,$fromIndex,$toIndex,true)"></ion-reorder-button>
+        <ion-option-button class="button-assertive " ng-click="deleteStation(district)"><i class="icon ion-trash-a"></i></ion-option-button>
 
       </ion-item>
 

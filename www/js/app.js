@@ -51,7 +51,22 @@ angular.module('starter', ['ionic', 'starter.controllers','timer','LocalStorageM
         }
       }
     })
-
+.state('app.favorites', {
+      url: '/favorites',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/favorites.html'
+        }
+      }
+    })
+    .state('app.pdf', {
+      url: '/pdf',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/pdf.html'
+        }
+      }
+    })
   .state('app.single', {
     url: '/districts/:districtId',
     views: {

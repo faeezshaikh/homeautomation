@@ -1,14 +1,24 @@
 
 <ion-view title="District">
+	<ion-nav-buttons side="secondary">
+		<button class="button button-icon ion-camera" ng-click="addPicture()"></button>
+	</ion-nav-buttons>
     <ion-content overflow-scroll="true" padding="true" class="has-header">
         <h4>District: AMEREN_ITC</h4>
-        <div style="line-height: 250px; border: 1px solid rgb(238, 238, 238); border-radius: 3px; text-align: center; background-color: rgb(255, 255, 255);">
+     <!--    <div style="line-height: 250px; border: 1px solid rgb(238, 238, 238); border-radius: 3px; text-align: center; background-color: rgb(255, 255, 255);">
             <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
+        </div> -->
+       
+       <div class="padding"  ng-show="imageData">
+        	<div class="picture">
+        		<img ng-src="data:image/jpeg;base64,{{imageData}}" alt="">
+		        <button class="button button-icon ion-trash-a" ng-click="$scope.imageData=false;"></button>
+        	</div>
         </div>
         <div class="list card">
             <div class="item item-divider">Card</div>
             <div class="item item-body">
-                <form class="list"></form>
+               	 
             </div>
         </div>
         <form class="list">
@@ -48,7 +58,9 @@
                 <span class="input-label">KVA</span>
                 <input type="text" placeholder="">
             </label>
-            <a ui-sref="readings" class="button button-stable button-block ">More Readings</a>
+            <a ui-sref="app.pdf" ng-click="createDocument()" class="button button-stable button-block ">More Readings</a>
+            
+            <!-- <button ng-click="createPdf()" class="button icon-left ion-play button-assertive">Create Invoice</button> -->     
             <div class="spacer" style="width: 283px; height: 35px;"></div>
             <label class="item item-input">
                 <span class="input-label">Comments</span><textarea placeholder="Notes"> </textarea>
