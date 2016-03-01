@@ -1,0 +1,47 @@
+
+<ion-view title="Map"> <ion-content scroll="false">
+<h4>District: AMEREN_ITC</h4>
+
+<map center="{{lat}},{{lon}}" zoom="12">
+
+
+	<marker ng-repeat="a in addresses" clickable="true"
+		ng-click="markerClicked(event,location)" position="{{a}}">
+
+
+
+	<info-window id="marker-info">
+	<div ng-non-bindable>
+		<div class="contents">
+			<h4>Name</h4>
+
+			<p>lalalala</p>
+
+			<div class="row">
+				<div class="col">
+					<p class="address">
+						<i class="ion ion-ios-location"></i> 3310 Brunswisk Dri
+					</p>
+				</div>
+				<div class="col">
+					<p class="distance">
+						<i class="ion ion-ios-navigate"></i> 20 mi
+					</p>
+					<p class="rating">
+						<i class="ion ion-star"></i> 5 &nbsp; <i class="ion ion-person"></i>
+						200
+					</p>
+				</div>
+			</div>
+
+			<div class="button button-small button-assertive"
+				ng-click="getDirections()">Get Directions</div>
+		</div>
+	</div>
+	</info-window>
+	
+	</marker>
+
+
+
+</map> </ion-content> </ion-view>

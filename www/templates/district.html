@@ -1,5 +1,5 @@
 
-<ion-view title="District">
+<ion-view title="Inspection Form">
 	<ion-nav-buttons side="secondary">
 		<button class="button button-icon ion-camera" ng-click="addPicture()"></button>
 	</ion-nav-buttons>
@@ -8,7 +8,31 @@
      <!--    <div style="line-height: 250px; border: 1px solid rgb(238, 238, 238); border-radius: 3px; text-align: center; background-color: rgb(255, 255, 255);">
             <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
         </div> -->
-       
+       <map center="{{lat}},{{lon}}" zoom="12">	
+        
+         <marker clickable="true" on-mousedown = "markerClicked(event,location)"
+         	 position="1901 Chouteau Ave, St. Louis, MO 63103">
+        
+      	      <info-window id="marker-info" >
+				<div ng-non-bindable>
+          <div id="siteNotice"></div>
+          <div id="bodyContent">
+            <p>
+            <b></b>
+            </p>
+            <p>
+            </p>
+          </div>
+        </div>
+			</info-window > 
+         	 </marker>
+         
+        
+          
+         </map>
+         
+        
+         
        <div class="padding"  ng-show="imageData">
         	<div class="picture">
         		<img ng-src="data:image/jpeg;base64,{{imageData}}" alt="">
@@ -16,9 +40,29 @@
         	</div>
         </div>
         <div class="list card">
-            <div class="item item-divider">Card</div>
+            <div class="item item-divider">Readings</div>
             <div class="item item-body">
-               	 
+               	 <ul class="list">
+
+  <li class="item item-toggle">
+     Inspection
+     <label class="toggle toggle-balanced">
+       <input type="checkbox">
+       <div class="track">
+         <div class="handle"></div>
+       </div>
+     </label>
+  </li>
+
+</ul>
+
+<div class="list">
+  <div class="item range range-balanced">
+    <i class="icon ion-ios-sunny-outline"></i>
+    <input type="range" name="volume" min="0" max="100" value="33">
+    <i class="icon ion-ios-sunny"></i>
+  </div>
+</div>
             </div>
         </div>
         <form class="list">

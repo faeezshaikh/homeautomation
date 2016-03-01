@@ -4,7 +4,6 @@
     <div class="bar bar-header item-input-inset">
       <!-- <button class="button button-icon ion-arrow-move" ng-click="model.reorderFlag=!model.reorderFlag;"></button> -->
       <button ng-class="model.reorderFlag ? 'button button-icon ion-navicon': 'button button-icon ion-arrow-move'" ng-click="model.reorderFlag=!model.reorderFlag;"></button>
-      	&nbsp;
       <label class="item-input-wrapper">
         <i class="icon ion-ios-search placeholder-icon"></i>
         <input  type="search" placeholder="Search" ng-model="searchText">
@@ -13,17 +12,17 @@
         
       </button>
       	
-      	<i class="icon ion-calculator "></i>&nbsp;({{ filtered.length}})
+      	<!-- <i class="icon ion-calculator "></i>&nbsp; -->
+      	({{ filtered.length}})
         
     </div>
 
 	<ion-refresher pulling-text="Pull to load Districts.." on-refresh="reloadDistricts()"></ion-refresher>
     <ion-list show-reorder="model.reorderFlag" can-swipe="true">
 
-      <ion-item class="item item-thumbnail-left item-icon-right item-remove-animate" ng-repeat="district in filtered = (districts | filter:searchText)" href="#/app/districts/{{district.id}}"> <img ng-src="data/img/green-grid.png">
+      <ion-item class="item item-thumbnail-left item-icon-right item-remove-animate" ng-repeat="district in filtered = (districts | filter:searchText)" href="#/app/districts/{{district.idField}}"> <img ng-src="data/img/district.png">
         <h2>{{district.descriptionField}}</h2>
         <p>
-        {{$scope.count = filtered.length}}
           <i class="ion ion-navicon"></i><span>&nbsp;{{district.idField}}</span>
         </p>
         <p><i class="ion ion-calendar"></i><span>&nbsp;Eff: {{district.effectiveDateField}}</span></p>

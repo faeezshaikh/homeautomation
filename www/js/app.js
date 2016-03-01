@@ -1,5 +1,5 @@
 
-angular.module('starter', ['ionic', 'starter.controllers','timer','LocalStorageModule','ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers','timer','LocalStorageModule','ngCordova','ngMap'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -67,11 +67,28 @@ angular.module('starter', ['ionic', 'starter.controllers','timer','LocalStorageM
         }
       }
     })
-  .state('app.single', {
+    .state('app.map', {
+      url: '/map',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/map.html'
+        }
+      }
+    })
+    .state('app.single', {
+      url: '/substations/:substationId',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/district.html',
+          controller: 'AppCtrl'
+        }
+      }
+    })
+  .state('app.substations', {
     url: '/districts/:districtId',
     views: {
       'menuContent': {
-        templateUrl: 'templates/district.html',
+        templateUrl: 'templates/substations.html',
         controller: 'AppCtrl'
        }
     }

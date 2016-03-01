@@ -1,3 +1,17 @@
+ .ng-map-info-window {
+    background-color: yellow;
+    color: brown;
+  }
+  .ng-map-info-window div:first-child > div:nth-child(1) {
+    border-top-color: navy !important;
+  }
+  .ng-map-info-window div:first-child > div:nth-child(3) div {
+    background-color: transparent !important;
+  }
+  .ng-map-info-window div:first-child > div:nth-child(4) {
+    background-color: transparent !important;
+  }
+  
 .nav-bar-block, .bar {
   background-color: rgb(36, 147, 60) !important;
 }
