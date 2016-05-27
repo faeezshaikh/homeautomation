@@ -1,149 +1,123 @@
-angular.module('starter.controllers', ['socialShareModule'])
+angular.module('starter.controllers', ['socialShareModule','ngCordova.plugins.datePicker'])
 
 
-.controller('AppCtrl', function($scope, $stateParams,$cordovaToast,$ionicPlatform,NgMap,filterFilter,$cordovaCamera, InvoiceService,$state, $http, substationService,$ionicModal, $cordovaToast,localStorageService, $rootScope,shareService,$ionicLoading) {
-	$scope.favs = [];
-	$scope.count = 9;
+.controller('AppCtrl', function($scope, $stateParams,$cordovaToast,$ionicPlatform,NgMap,filterFilter,$cordovaCamera, InvoiceService,$state, $http, substationService,
+			$ionicModal, $cordovaToast,localStorageService, $rootScope,shareService,$ionicLoading,$cordovaDatePicker) {
 	var districtId = $stateParams.districtId;
 	$scope.dId = districtId;
+	$scope.datetimeValue = 'Tap here to pick a time';
+	$scope.mainswitch = true;
+	$scope.powerbuttonClass = 'button button-full button-dark';
+	$scope.turningMsg = 'Turning ligths off in..';
+	$scope.timerClass = 'button button-block button-clear center';
 	
-	console.log('district id' , districtId);
+	$scope.rooms = {livingRoom:false,kitchen:false,bedroom:false};
 	
-	if(districtId) {
-		getSubstations(districtId);
+	$scope.timerElapsed = function() {
+		$scope.turningMsg = 'Lights are off';
+//		$scope.myMains = '';
+		$scope.timerClass = 'button button-block button-dark center' ;
+		console.log('Lights off', $scope.myMains);
+		shutdownMain();
+		 
+		$scope.$apply();
 	}
 	
-	if(!substationService.getLoadedFlag()) {
-		console.log('Cache empty,calling remote service.');
-		callServiceToGetDistricts();
-		substationService.setLoadedFlag(true);
+
+	
+	$scope.calendarTapped = function(datetimeValue){
+		$scope.turningMsg = 'Turning ligths off in..';
+		$scope.showTimer = true;
+		$scope.timerClass = 'button button-block button-outline button-balanced center';
+		$scope.$broadcast('timer-start');
+		console.log('countdown' , $rootScope.countdown);
+		
+    };
+//	$scope.toggleScheduler = function(scheduler) {
+//		if(scheduler) {
+//			console.log('Timer Enabled');
+//			$rootScope.$broadcast('timer-start');
+//		} else {
+//			console.log('Timer Disabled');
+//			$rootScope.$broadcast('timer-stop');
+//		}
+//		
+//		console.log('Enabled Scheduler' , $scope.countdown);
+//		$rootScope.$broadcast('timer-stop');
+//		$rootScope.$broadcast('timer-start');
+//	}
+	
+	
+	function toggleMainSwitch(val) {
+		if(val) {
+			$scope.mainSwitchClass = 'balanced';
+			$scope.powerbuttonClass = 'button button-full button-balanced';	
+		}
+		
 	}
 	
-	function callServiceToGetDistricts() {
+	$scope.mainSwtichClicked = function() {
+		shutdownMain();
+		$scope.showTimer = false;
+	}
+	function shutdownMain() {
+		$scope.mainSwitchClass = '';
+		$scope.powerbuttonClass = 'button button-full button-dark';
+		$scope.myVar =  '';
+		$scope.kitchenClass =  '';
+		$scope.livingClass =  '';
+		$scope.rooms.livingRoom = $scope.rooms.kitchen = $scope.rooms.bedroom = false;
+		sendShutdownSignal();
+	}
+	
+	function sendShutdownSignal() {
+		substationService.shutdownHome().then(function(data) {
+			console.log('call succeeded',data);
+		}, function(err) {
+			console.log('call failed', err)
+		});
+	}
+	$scope.toggleBedroom = function(val) {
+		console.log('Bedroom is: ' ,val);
+		substationService.sendSignal('bedroom').then(function(data) {
+			console.log('call succeeded',data);
+		}, function(err) {
+			console.log('call failed', err)
+		});
+		$scope.myVar= val ? 'balanced' : '';
+		toggleMainSwitch(val);
 		
-		$ionicLoading.show({
-		      template: 'Loading Districts...'
-		    });
+	}
+	
+	$scope.toggleKitchen = function(val) {
+		console.log('Kitchen is: ' ,val);
+		substationService.sendSignal('kitchen').then(function(data) {
+			console.log('call succeeded',data);
+		}, function(err) {
+			console.log('call failed', err)
+		});
 		
-		substationService.getDistricts().then(function(data) {
-			$scope.districts = data;
-			$ionicLoading.hide();
-			 $cordovaToast
-			    .show('Remote call succeeded.', 'long', 'bottom')
-			    .then(function(success) {
-			      // success
-			    }, function (error) {
-			      // error
-			    });
-			  
-			
-		}, function(){
-			
-			console.log('Call to remote service failed. Fetching from local DB..');
-			  $cordovaToast
-			    .show('Call to remote service failed. Fetching from local DB..', 'long', 'bottom')
-			    .then(function(success) {
-			      // success
-			    }, function (error) {
-			      // error
-			    });
-			  
-			$http.get('data/districts.json')
-			.success(function(resp) {
-				console.log('Successfully got data from Local DB',resp);
-				$scope.districts = resp;
-				$ionicLoading.hide();
-			})
-			.error(function(data,status,headers,config){
-				console.log('Error getting data from Local DB',data);
-				$ionicLoading.hide();
-			});
-			
+		$scope.kitchenClass= val ? 'balanced' : '';
+		toggleMainSwitch(val);	
+	}
+	
+	$scope.toggleLiving = function(val) {
+		console.log('Living is: ' ,val);
+		 $scope.livingClass= val ? 'balanced' : '';
+		toggleMainSwitch(val);
+		
+	}
+	
+	$scope.openCloseGarageDoor = function() {
+
+		console.log('closing garage is: ');
+		substationService.openCloseGarage().then(function(data) {
+			console.log('call succeeded',data);
+		}, function(err) {
+			console.log('call failed', err)
 		});
 	}
 	
-	function getSubstations(districtId) {
-
-		
-		$ionicLoading.show({
-		      template: 'Loading Substations for ' + districtId + ' ..'
-		    });
-		
-		substationService.getSubstations(districtId).then(function(data) {
-			$scope.substations = data;
-			$ionicLoading.hide();
-			 $cordovaToast
-			    .show('Remote call succeeded.', 'long', 'bottom')
-			    .then(function(success) {
-			      // success
-			    }, function (error) {
-			      // error
-			    });
-			  
-			
-		}, function(){
-			
-			console.log('Call to remote service failed. Fetching from local DB..');
-			  $cordovaToast
-			    .show('Call to remote service failed. Fetching from local DB..', 'long', 'bottom')
-			    .then(function(success) {
-			      // success
-			    }, function (error) {
-			      // error
-			    });
-			  
-			$http.get('data/substations.json')
-			.success(function(resp) {
-				console.log('Successfully got data from Local DB',resp);
-				$scope.districts = resp;
-				$ionicLoading.hide();
-			})
-			.error(function(data,status,headers,config){
-				console.log('Error getting data from Local DB',data);
-				$ionicLoading.hide();
-			});
-			
-		});
-	
-	}
-
-	$scope.filteredDistricts = function() {
-		var filtered = filterFilter($scope.districts, $scope.searchText);
-		return filtered.length;
-	}
-  
-  /////// Move, Delete, Favorites /////
-  $scope.deleteStation = function(district) {
-	  var indx = $scope.favs.indexOf(district);
-	  $scope.favs.splice(indx,1);
-  }
-  
-  $scope.moveStation = function(district,fromIndex,toIndex,isFav) {
-	  if(isFav) {
-		  $scope.favs.splice(fromIndex,1);
-		  $scope.favs.splice(toIndex,0,district);
-	  }
-	  $scope.districts.splice(fromIndex,1);
-	  $scope.districts.splice(toIndex,0,district);
-  }
-  $scope.addToFavorites = function(district) {
-	  var indx = $scope.favs.indexOf(district);
-	  if(indx==-1) {
-		  $scope.favs.push(district);
-	  } else {
-		  $scope.favs.splice(indx,1);
-	  }
-	  console.log($scope.favs);
-	  
-  }
-   /////// Move, Delete, Favorites /////
-
-  $scope.reloadDistricts = function() {
-	  callServiceToGetDistricts();
-	  $scope.$broadcast('scroll.refreshComplete');
-  }
- 
-
 	////////// Map //////////
   
 
@@ -152,7 +126,8 @@ angular.module('starter.controllers', ['socialShareModule'])
 	});
 	$scope.addresses = [
 	                    "1901 Chouteau Ave, St. Louis, MO 63103",
-	                    "1010 Pine Street, St. Louis MO 63101"
+	                    "1010 Pine Street, St. Louis MO 63101",
+	                    "3310 Brunswick Drive, Florissant MO 63033"
 	                    ];
 
   $scope.model = {
@@ -188,74 +163,7 @@ angular.module('starter.controllers', ['socialShareModule'])
 	
 	////////// Map //////////
 	
-	///////// PICTURE /////////
 	
-	 
-	  $scope.addPicture = function() {
-		  
-		  document.addEventListener("deviceready", function () {
-			  var options = {
-				      quality: 50,
-				      destinationType: Camera.DestinationType.DATA_URL,
-				      sourceType: Camera.PictureSourceType.CAMERA,
-				      allowEdit: true,
-				      encodingType: Camera.EncodingType.JPEG,
-				      targetWidth: 100,
-				      targetHeight: 100,
-				      popoverOptions: CameraPopoverOptions,
-				      saveToPhotoAlbum: false,
-				      correctOrientation:true
-				    };
-
-
-				    $cordovaCamera.getPicture(options).then(function(imageData) {
-				    	$scope.imageData = imageData;
-				      var image = document.getElementById('myImage');
-				      image.src = "data:image/jpeg;base64," + imageData;
-				    }, function(err) {
-				      // error
-				    });
-				
-		  },false);
-		 
-	};
-	
-	///////// PICTURE /////////
-	///////// PDF /////////
-	
-	setDefaultsForPdfViewer($scope);
-	function setDefaultsForPdfViewer($scope) {
-        $scope.scroll = 0;
-        $scope.loading = 'loading';
-
-        $scope.onError = function (error) {
-            console.error(error);
-        };
-
-        $scope.onLoad = function () {
-            $scope.loading = '';
-        };
-
-        $scope.onProgress = function (progress) {
-            console.log(progress);
-        };
-    }
-	  $scope.createDocument = function () {
-//          var invoice = getDummyData();
-         
-
-//          InvoiceService.createPdf()
-//              .then(function (pdf) {
-//                  var blob = new Blob([pdf], { type: 'application/pdf' });
-//                  $scope.pdfUrl = URL.createObjectURL(blob);
-//                  console.log($scope.pdfUrl);
-//
-//               
-//              });
-      };
-      
-  	///////// PDF /////////
-
    
   ////////// SOCIAL SHARING /////
       

@@ -1,8 +1,20 @@
 
-angular.module('starter', ['ionic', 'starter.controllers','timer','LocalStorageModule','ngCordova','ngMap'])
+angular.module('starter', ['ionic', 'starter.controllers','timer','LocalStorageModule','ngCordova','ngMap','ion-datetime-picker'])
 
+  .run(function($ionicPickerI18n) {
+        $ionicPickerI18n.weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        $ionicPickerI18n.months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        $ionicPickerI18n.ok = "OK";
+        $ionicPickerI18n.cancel = "Cancel";
+    })
+.run(function($cordovaSplashscreen) {
+  setTimeout(function() {
+    $cordovaSplashscreen.hide()
+  }, 3000)
+})
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
+	  
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -27,14 +39,6 @@ angular.module('starter', ['ionic', 'starter.controllers','timer','LocalStorageM
   })
 
   
-  .state('app.search', {
-      url: '/search',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/search.html'
-        }
-      }
-    })
      .state('app.share', {
       url: '/share',
       views: {
@@ -51,19 +55,19 @@ angular.module('starter', ['ionic', 'starter.controllers','timer','LocalStorageM
         }
       }
     })
-.state('app.favorites', {
-      url: '/favorites',
+     .state('app.schedule', {
+      url: '/schedule',
       views: {
         'menuContent': {
-          templateUrl: 'templates/favorites.html'
+          templateUrl: 'templates/schedule.html'
         }
       }
     })
-    .state('app.pdf', {
-      url: '/pdf',
+    .state('app.garage', {
+      url: '/garage',
       views: {
         'menuContent': {
-          templateUrl: 'templates/pdf.html'
+          templateUrl: 'templates/garage.html'
         }
       }
     })
@@ -84,15 +88,7 @@ angular.module('starter', ['ionic', 'starter.controllers','timer','LocalStorageM
         }
       }
     })
-  .state('app.substations', {
-    url: '/districts/:districtId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/substations.html',
-        controller: 'AppCtrl'
-       }
-    }
-  });
+  ;
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/districts');
 });

@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ameren.substation" version="0.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>Substation</name>
+<widget id="com.ameren.homeautomation" version="0.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>Smart Home</name>
   <description>
-        A Substation App
+        A Home Automation App
     </description>
   <author email="fshaikh@ameren.com" href="http://www.ameren.com/">
       Ionic Framework Team
     </author>
   <content src="index.html"/>
   <access origin="*"/>
+  <allow-navigation href="https://*/*"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="android-minSdkVersion" value="14"/>
   <preference name="BaawsckupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>
-  <preference name="SplashScreenDelay" value="4000"/>
+  <preference name="SplashScreenDelay" value="30000"/>
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>

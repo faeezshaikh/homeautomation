@@ -2,9 +2,9 @@
 angular.module('socialShareModule', [ 'ngCordova' ]).service('shareService', [ '$cordovaSocialSharing', function($cordovaSocialSharing) {
 	var url = 'https://goo.gl/wU62Xm';
 	var appstoreLink = [ url ];
-	var message = "Just thought you might want to check this app out. I found it pretty useful preparing for the AWS Certified Developer exam. " + url;
-	var tweet = "Great app to help you prepare for the AWS Certified Developer exam. Check it out in Google Play ";
-	var subject = "Check out this app in Google Play";
+	var message = "Check out this cool service from Ameren. It lets you control your power, garage door, home security and a lot more from anywhere on earth" + url;
+	var tweet = "Check out this cool service from Ameren. It lets you control your power, garage door, home security and a lot more from anywhere on earth";
+	var subject = "Check out this cool app from Ameren";
 //	var appImage = [ 'data/img/icon.png' ];
 	var appImage = null;
 

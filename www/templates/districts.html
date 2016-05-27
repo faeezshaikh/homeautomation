@@ -1,43 +1,167 @@
-<ion-view view-title="Districts ({{districts.length}})"> 
+<ion-view view-title="Power Control">
+
   <ion-content>
+ 
+ 
+            
+    <div class="list">
+      <div class="list card">
+        <div class="item  item-avatar item-divider">
+          <img style="top:11px;" src="data/img/bedroom.png">
+          <h2 ng-class="myVar" >Bedroom</h2>
+          <p><span ng-class="myVar" >Kid's room upstairs</span></p>
+        </div>
+        <div class="row" ng-class="myVar">
+          <div class="col col-50 center">
+            <a class="item item-icon-left">
+              <i class="icon ion-ios-thunderstorm-outline"></i> 4.31 KWh
+            </a>
+          </div>
+          <div class="col col-50 center">
+            <a class="item item-icon-left">
+              <i class="icon ion-clock"></i> 50 hrs
+            </a>
+          </div>
+        </div>
+        <div class="row" ng-class="myVar">
+          <div class="col col-50 center">
+            <a class="item item-icon-left">
+              <i class="icon ion-social-usd "></i>
+              5.45 USD
+            </a>
+          </div>
+          <div class="col col-50 center">
+           <a class="item item-icon-left">
+            <i class="icon ion-calendar"></i>
+            Since 5/1
+            </a>
+          </div>
 
-    <div class="bar bar-header item-input-inset">
-      <!-- <button class="button button-icon ion-arrow-move" ng-click="model.reorderFlag=!model.reorderFlag;"></button> -->
-      <button ng-class="model.reorderFlag ? 'button button-icon ion-navicon': 'button button-icon ion-arrow-move'" ng-click="model.reorderFlag=!model.reorderFlag;"></button>
-      <label class="item-input-wrapper">
-        <i class="icon ion-ios-search placeholder-icon"></i>
-        <input  type="search" placeholder="Search" ng-model="searchText">
-      </label>
-      <button  class="button button-icon ion-android-cancel" ng-click="searchText=''">
-        
-      </button>
-      	
-      	<!-- <i class="icon ion-calculator "></i>&nbsp; -->
-      	({{ filtered.length}})
-        
+        </div>
+        <ul class="item center ">
+            <ion-toggle ng-model="rooms.bedroom" toggle-class="toggle-balanced" ng-change="toggleBedroom(rooms.bedroom);"><span ng-class="myVar" >Switch {{ rooms.bedroom ? 'Off' : 'On' }}</span></ion-toggle>
+        </ul>
+      </div>
+      
+      <!-- Kitchen -->
+       <div class="list card ">
+        <div class="item  item-avatar item-divider">
+          <img style="top:11px;" src="data/img/kitchen.png">
+          <h2 ng-class="kitchenClass">Kitchen</h2>
+          <p ><span ng-class="kitchenClass">Last month: 12 KWh</span></p>
+        </div>
+        <div class="row" ng-class="kitchenClass">
+          <div class="col col-50 center">
+            <a class="item item-icon-left">
+              <i class="icon ion-ios-thunderstorm-outline"></i> 2.57 KWh
+            </a>
+          </div>
+          <div class="col col-50 center">
+            <a class="item item-icon-left">
+              <i class="icon ion-clock"></i> 25 hrs
+            </a>
+          </div>
+        </div>
+        <div class="row" ng-class="kitchenClass">
+          <div class="col col-50 center">
+            <a class="item item-icon-left">
+              <i class="icon ion-social-usd "></i>
+              1.36 USD
+            </a>
+          </div>
+          <div class="col col-50 center">
+           <a class="item item-icon-left">
+            <i class="icon ion-calendar"></i>
+            Since 5/1
+            </a>
+          </div>
+
+        </div>
+        <ul class="item center assertive">
+            <ion-toggle ng-model="rooms.kitchen" toggle-class="toggle-balanced" ng-change="toggleKitchen(rooms.kitchen); " ><span ng-class="kitchenClass" >Switch {{ rooms.kitchen ? 'Off' : 'On' }}</span></ion-toggle>
+        </ul>
+      </div>
+      
+      <!-- Living Room -->
+       <div class="list card">
+        <div class="item  item-avatar item-divider">
+          <img style="top:11px;"  src="data/img/livingroom.png">
+          <h2 ng-class="livingClass">Living Room</h2>
+          <p ><span ng-class="livingClass">Last month: $11.98</span></p>
+        </div>
+         <div class="row" ng-class="livingClass">
+          <div class="col col-50 center">
+            <a class="item item-icon-left">
+              <i class="icon ion-ios-thunderstorm-outline"></i> 7.98 KWh
+            </a>
+          </div>
+          <div class="col col-50 center">
+            <a class="item item-icon-left">
+              <i class="icon ion-clock"></i> 10 hrs
+            </a>
+          </div>
+        </div>
+        <div class="row" ng-class="livingClass">
+          <div class="col col-50 center">
+            <a class="item item-icon-left">
+              <i class="icon ion-social-usd "></i>
+              4.87 USD
+            </a>
+          </div>
+          <div class="col col-50 center">
+           <a class="item item-icon-left">
+            <i class="icon ion-calendar"></i>
+            Since 5/1
+            </a>
+          </div>
+
+        </div>
+        <ul class="item center assertive">
+            <ion-toggle ng-model="rooms.livingRoom" toggle-class="toggle-balanced" ng-change="toggleLiving(rooms.livingRoom);"><span ng-class="livingClass" >Switch {{ rooms.livingRoom ? 'Off' : 'On' }}</span></ion-toggle>
+        </ul>
+      </div>
+      
+      
+       <!-- Main Switch -->
+       <div class="list card">
+        <div class="item  item-avatar item-divider">
+          <img style="top:11px;"  src="data/img/unplug.ico">
+          <h2 ng-class="mainSwitchClass">Main Switch</h2>
+          <p ><span ng-class="mainSwitchClass">Last month: $155.54</span></p>
+        </div>
+         <div class="row" ng-class="mainSwitchClass">
+          <div class="col col-50 center">
+            <a class="item item-icon-left">
+              <i class="icon ion-ios-thunderstorm-outline"></i> 7.98 KWh
+            </a>
+          </div>
+          <div class="col col-50 center">
+            <a class="item item-icon-left">
+              <i class="icon ion-clock"></i> 10 hrs
+            </a>
+          </div>
+        </div>
+        <div class="row" ng-class="mainSwitchClass">
+          <div class="col col-50 center">
+            <a class="item item-icon-left">
+              <i class="icon ion-social-usd "></i>
+              4.87 USD
+            </a>
+          </div>
+          <div class="col col-50 center">
+           <a class="item item-icon-left">
+            <i class="icon ion-calendar"></i>
+            Since 5/1
+            </a>
+          </div>
+
+        </div>
+        <ul class="item center assertive">
+ 			<button ng-class="powerbuttonClass" ng-click="mainSwtichClicked()">
+ 			<i class="icon ion-power"></i>
+			</button>
+        </ul>
+      </div>
     </div>
-
-	<ion-refresher pulling-text="Pull to load Districts.." on-refresh="reloadDistricts()"></ion-refresher>
-    <ion-list show-reorder="model.reorderFlag" can-swipe="true">
-
-      <ion-item class="item item-thumbnail-left item-icon-right item-remove-animate" ng-repeat="district in filtered = (districts | filter:searchText)" href="#/app/districts/{{district.idField}}"> <img ng-src="data/img/district.png">
-        <h2>{{district.descriptionField}}</h2>
-        <p>
-          <i class="ion ion-navicon"></i><span>&nbsp;{{district.idField}}</span>
-        </p>
-        <p><i class="ion ion-calendar"></i><span>&nbsp;Eff: {{district.effectiveDateField}}</span></p>
-        <p><i class="ion ion-ios-calendar"></i><span>&nbsp;Exp: 12-Dec-2050</span></p>
-
-        <i class="icon ion-chevron-right icon-accessory"></i>
-
-        <!-- <ion-delete-button class="ion-minus-circled" ng-click="deleteStation($index)"></ion-delete-button> -->
-        <ion-reorder-button class="ion-navicon" on-reorder="moveStation(district,$fromIndex,$toIndex)"></ion-reorder-button>
-        <ion-option-button class="mycolor" ng-click="addToFavorites(district); clicked=!clicked;"><i ng-class="clicked ? 'icon ion-ios-heart-outline' : 'icon ion-heart'"></i></ion-option-button>
-        <!-- <ion-option-button class="button-assertive " ng-click="deleteStation(district)"><i class="icon ion-trash-a"></i></ion-option-button> -->
-
-      </ion-item>
-
-
-    </ion-list>
   </ion-content>
 </ion-view>
