@@ -7,13 +7,26 @@ angular.module('starter')
 
 	
 	return {
-		sendSignal: function(room) {
+		sendSignal: function(room,cmd) {
 			var str;
-			if(room === 'bedroom') {
+			if(room === 'bedroom' && cmd == 'toggle') {
 				str = 'toggleBed';
 			}
-			if(room === 'kitchen') {
+			if(room === 'kitchen' && cmd == 'toggle') {
 				str = 'toggleKit';
+			}
+			
+			if(room === 'bedroom' && cmd === 'on') {
+				str = 'bedroomOn';
+			}
+			if(room === 'bedroom' && cmd === 'off') {
+				str = 'bedroomOff';
+			}
+			if(room === 'kitchen' && cmd === 'on') {
+				str = 'kitchenOn';
+			}
+			if(room === 'kitchen' && cmd === 'off') {
+				str = 'kitchenOff';
 			}
 			var deferred = $q.defer();
 			

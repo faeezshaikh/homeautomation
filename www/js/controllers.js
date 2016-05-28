@@ -79,7 +79,7 @@ angular.module('starter.controllers', ['socialShareModule','ngCordova.plugins.da
 	}
 	$scope.toggleBedroom = function(val) {
 		console.log('Bedroom is: ' ,val);
-		substationService.sendSignal('bedroom').then(function(data) {
+		substationService.sendSignal('bedroom','toggle').then(function(data) {
 			console.log('call succeeded',data);
 		}, function(err) {
 			console.log('call failed', err)
@@ -91,7 +91,7 @@ angular.module('starter.controllers', ['socialShareModule','ngCordova.plugins.da
 	
 	$scope.toggleKitchen = function(val) {
 		console.log('Kitchen is: ' ,val);
-		substationService.sendSignal('kitchen').then(function(data) {
+		substationService.sendSignal('kitchen','toggle').then(function(data) {
 			console.log('call succeeded',data);
 		}, function(err) {
 			console.log('call failed', err)
@@ -105,7 +105,6 @@ angular.module('starter.controllers', ['socialShareModule','ngCordova.plugins.da
 		console.log('Living is: ' ,val);
 		 $scope.livingClass= val ? 'balanced' : '';
 		toggleMainSwitch(val);
-		
 	}
 	
 	$scope.openCloseGarageDoor = function() {
@@ -118,6 +117,26 @@ angular.module('starter.controllers', ['socialShareModule','ngCordova.plugins.da
 		});
 	}
 	
+	
+	function roomCommand(room, cmd) {
+
+		console.log('Rooom Cmd is: ' ,room+ ',' + cmd);
+		substationService.sendSignal(room,cmd).then(function(data) {
+			console.log('call succeeded',data);
+		}, function(err) {
+			console.log('call failed', err)
+		});
+		
+		if(room === 'kitchen') {
+			$scope.kitchenClass= (cmd == 'on') ? 'balanced' : '';
+		}
+		if(room === 'bedroom') {
+			$scope.myVar= (cmd == 'on') ? 'balanced' : '';
+		}
+		toggleMainSwitch((cmd == 'on')?true:false);	
+	
+		
+	}
 	////////// Map //////////
   
 
@@ -185,7 +204,85 @@ angular.module('starter.controllers', ['socialShareModule','ngCordova.plugins.da
   	
     ////////// SOCIAL SHARING /////
   	
-  	
+
+    $scope.record = function() {
+      var recognition = new SpeechRecognition();
+      recognition.onresult = function(event) {
+          if (event.results.length > 0) {
+              $scope.recognizedText = event.results[0][0].transcript;
+              $scope.$apply();
+              determineCommand($scope.recognizedText);
+          }
+      };
+      recognition.start();
+    };
+    
+    function determineCommand(str){
+
+        if(str.includes("turn bedroom on") || str.includes("bedroom on") || str.includes("bedroom lights on") || str.includes("on bedroom lights") || str.includes("turn on bedroom lights") || str.includes("turn bedroom lights on")) {
+        	roomCommand('bedroom','on');
+      	  confrimComman('bedroom lights on');
+        }
+        
+        if(str.includes("turn bedroom off") || str.includes("bedroom off") || str.includes("bedroom lights off") || str.includes("off bedroom lights") || str.includes("turn off bedroom lights") || str.includes("turn bedroom lights off")) {
+        	roomCommand('bedroom','off');
+      	  confrimComman('bedroom lights off');
+        }
+        
+        ///
+        
+        if(str.includes("turn kitchen on") || str.includes("kitchen on") || str.includes("kitchen lights on") || str.includes("on kitchen lights") || str.includes("turn on kitchen lights") || str.includes("turn kitchen lights on")) {
+        	roomCommand('kitchen','on');
+      	  confrimComman('kitchen lights on');
+        }
+        
+        if(str.includes("turn kitchen off") || str.includes("kitchen off") || str.includes("kitchen lights off") || str.includes("off kitchen lights") || str.includes("turn off kitchen lights") || str.includes("turn kitchen lights off")) {
+        	roomCommand('kitchen','off');
+      	  confrimComman('kitchen lights off');
+        }
+        
+        ///
+      
+        if(str.includes("turn living room on") || str.includes("living room on") || str.includes("living room lights on") || str.includes("on living room lights") || str.includes("turn on living room lights") || str.includes("turn living room lights on")) {
+        	roomCommand('bedroom','on');
+      	  confrimComman('living room lights on');
+        }
+        
+        if(str.includes("turn living room off") || str.includes("living room off") || str.includes("living room lights off") || str.includes("off living room lights") || str.includes("turn off living room lights") || str.includes("turn living room lights off")) {
+        	roomCommand('bedroom','off');
+      	  confrimComman('living room lights off');
+        }
+        
+        ///
+        if(str.includes("open garage door") || str.includes("garage door open") || str.includes("open the garage door") ) {
+      	  confrimComman('garage door opened');
+        }
+        
+        if(str.includes("close garage door") || str.includes("garage door close") || str.includes("close the garage door") ) {
+      	  confrimComman('garage door closed');
+        }
+        
+        ///
+        
+
+        if(str.includes("turn everything off") || str.includes("shut down everything") || str.includes("shutdown everything") ||  str.includes("shut everything down")) {
+        	sendShutdownSignal();
+      	  confrimComman('everything is now turned off');
+        }
+        
+    }
+    
+    function confrimComman(cmd) {
+    	TTS.speak({
+            text: cmd,
+            locale: 'en-GB',
+            rate: 1.5
+        }, function () {
+            // Do Something after success
+        }, function (reason) {
+            // Handle the error case
+        });
+    }
 
 
 });
