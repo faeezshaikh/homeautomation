@@ -63,6 +63,14 @@ angular.module('starter', ['ionic', 'starter.controllers','timer','LocalStorageM
         }
       }
     })
+     .state('app.vacation', {
+      url: '/vacation',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/vacation.html'
+        }
+      }
+    })
     .state('app.garage', {
       url: '/garage',
       views: {

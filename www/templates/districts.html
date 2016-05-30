@@ -9,13 +9,14 @@
         <div class="item  item-avatar item-divider">
           <img style="top:11px;" src="data/img/bedroom.png">
           <h2 ng-class="myVar" >Bedroom</h2>
-          <p><span ng-class="myVar" >Kid's room upstairs</span></p>
+          <p><span ng-class="myVar" >Last month: 3 KWh / $13.50</span></p>
         </div>
         <div class="row" ng-class="myVar">
-          <div class="col col-50 center">
-            <a class="item item-icon-left">
-              <i class="icon ion-ios-thunderstorm-outline"></i> 4.31 KWh
-            </a>
+			<div class="col col-50 center">
+	           <a class="item item-icon-left">
+	            <i class="icon ion-calendar"></i>
+	            Since 6/1
+	            </a>
           </div>
           <div class="col col-50 center">
             <a class="item item-icon-left">
@@ -30,10 +31,10 @@
               5.45 USD
             </a>
           </div>
+          
           <div class="col col-50 center">
-           <a class="item item-icon-left">
-            <i class="icon ion-calendar"></i>
-            Since 5/1
+            <a class="item item-icon-left">
+              <i class="icon ion-ios-thunderstorm-outline"></i> 4.31 KWh
             </a>
           </div>
 
@@ -48,13 +49,15 @@
         <div class="item  item-avatar item-divider">
           <img style="top:11px;" src="data/img/kitchen.png">
           <h2 ng-class="kitchenClass">Kitchen</h2>
-          <p ><span ng-class="kitchenClass">Last month: 12 KWh</span></p>
+          <p ><span ng-class="kitchenClass">Last month: 2 KWh / $4.70</span></p>
         </div>
         <div class="row" ng-class="kitchenClass">
+        
           <div class="col col-50 center">
-            <a class="item item-icon-left">
-              <i class="icon ion-ios-thunderstorm-outline"></i> 2.57 KWh
-            </a>
+	           <a class="item item-icon-left">
+	            <i class="icon ion-calendar"></i>
+	            Since 6/1
+	            </a>
           </div>
           <div class="col col-50 center">
             <a class="item item-icon-left">
@@ -69,10 +72,9 @@
               1.36 USD
             </a>
           </div>
-          <div class="col col-50 center">
-           <a class="item item-icon-left">
-            <i class="icon ion-calendar"></i>
-            Since 5/1
+           <div class="col col-50 center">
+            <a class="item item-icon-left">
+              <i class="icon ion-ios-thunderstorm-outline"></i> 2.57 KWh
             </a>
           </div>
 
@@ -87,13 +89,15 @@
         <div class="item  item-avatar item-divider">
           <img style="top:11px;"  src="data/img/livingroom.png">
           <h2 ng-class="livingClass">Living Room</h2>
-          <p ><span ng-class="livingClass">Last month: $11.98</span></p>
+          <p ><span ng-class="livingClass">Last month: 8 KWh / $33.50</span></p>
         </div>
          <div class="row" ng-class="livingClass">
-          <div class="col col-50 center">
-            <a class="item item-icon-left">
-              <i class="icon ion-ios-thunderstorm-outline"></i> 7.98 KWh
-            </a>
+          
+            <div class="col col-50 center">
+	           <a class="item item-icon-left">
+	            <i class="icon ion-calendar"></i>
+	            Since 6/1
+	            </a>
           </div>
           <div class="col col-50 center">
             <a class="item item-icon-left">
@@ -108,10 +112,9 @@
               4.87 USD
             </a>
           </div>
-          <div class="col col-50 center">
-           <a class="item item-icon-left">
-            <i class="icon ion-calendar"></i>
-            Since 5/1
+         <div class="col col-50 center">
+            <a class="item item-icon-left">
+              <i class="icon ion-ios-thunderstorm-outline"></i> 7.98 KWh
             </a>
           </div>
 
@@ -127,34 +130,8 @@
         <div class="item  item-avatar item-divider">
           <img style="top:11px;"  src="data/img/unplug.ico">
           <h2 ng-class="mainSwitchClass">Main Switch</h2>
-          <p ><span ng-class="mainSwitchClass">Last month: $155.54</span></p>
-        </div>
-         <div class="row" ng-class="mainSwitchClass">
-          <div class="col col-50 center">
-            <a class="item item-icon-left">
-              <i class="icon ion-ios-thunderstorm-outline"></i> 7.98 KWh
-            </a>
-          </div>
-          <div class="col col-50 center">
-            <a class="item item-icon-left">
-              <i class="icon ion-clock"></i> 10 hrs
-            </a>
-          </div>
-        </div>
-        <div class="row" ng-class="mainSwitchClass">
-          <div class="col col-50 center">
-            <a class="item item-icon-left">
-              <i class="icon ion-social-usd "></i>
-              4.87 USD
-            </a>
-          </div>
-          <div class="col col-50 center">
-           <a class="item item-icon-left">
-            <i class="icon ion-calendar"></i>
-            Since 5/1
-            </a>
-          </div>
-
+          <p ><span ng-class="mainSwitchClass">Previous month: 13.5 KWh / $153.50</span></p>
+          <p ><span ng-class="mainSwitchClass">Current month: 9.2 KWh / $130.50</span></p>
         </div>
         <ul class="item center assertive">
  			<button ng-class="powerbuttonClass" ng-click="mainSwtichClicked()">
@@ -163,16 +140,25 @@
         </ul>
       </div>
       
-      <div class="list card">
-      	
-        
-        <ul class="item center assertive">
- 			 <button class="button button-full button-balanced"ng-click="record()">
-          <i class="icon ion-ios-mic"></i>
+      
+       <!-- Voice Assistant -->
+       <div class="list card">
+        <div class="item  item-avatar item-divider">
+          <img style="top:11px;"  src="data/img/voice.png">
+          <h2 >Ameren Voice Assistant</h2>
+          <p ><span >Tap to talk to Ameren</span></p>
+        </div>
+         <ul class="item center assertive">
+ 			 <button class="button button-full button-cutsom"ng-click="record()">
+         ( <i class="icon ion-ios-mic"></i> )
         </button>
         </ul>
-        
       </div>
+      
+      
+      
+      
+      
       <div class="card">
           <div class="item item-text-wrap">
             {{recognizedText}}

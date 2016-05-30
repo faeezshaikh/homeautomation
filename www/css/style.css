@@ -12,6 +12,9 @@
     background-color: transparent !important;
   }
   
+  .button-cutsom {
+  background-color: rgb(36, 147, 60) !important;
+  }
 .nav-bar-block, .bar {
   background-color: rgb(36, 147, 60) !important;
 }

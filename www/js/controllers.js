@@ -10,12 +10,12 @@ angular.module('starter.controllers', ['socialShareModule','ngCordova.plugins.da
 	$scope.powerbuttonClass = 'button button-full button-dark';
 	$scope.turningMsg = 'Turning ligths off in..';
 	$scope.timerClass = 'button button-block button-clear center';
+	$scope.livingClass = false ; $scope.kitchenClass = false ; $scope.myVar = false;
 	
 	$scope.rooms = {livingRoom:false,kitchen:false,bedroom:false};
 	
 	$scope.timerElapsed = function() {
 		$scope.turningMsg = 'Lights are off';
-//		$scope.myMains = '';
 		$scope.timerClass = 'button button-block button-dark center' ;
 		console.log('Lights off', $scope.myMains);
 		shutdownMain();
@@ -33,25 +33,13 @@ angular.module('starter.controllers', ['socialShareModule','ngCordova.plugins.da
 		console.log('countdown' , $rootScope.countdown);
 		
     };
-//	$scope.toggleScheduler = function(scheduler) {
-//		if(scheduler) {
-//			console.log('Timer Enabled');
-//			$rootScope.$broadcast('timer-start');
-//		} else {
-//			console.log('Timer Disabled');
-//			$rootScope.$broadcast('timer-stop');
-//		}
-//		
-//		console.log('Enabled Scheduler' , $scope.countdown);
-//		$rootScope.$broadcast('timer-stop');
-//		$rootScope.$broadcast('timer-start');
-//	}
-	
 	
 	function toggleMainSwitch(val) {
 		if(val) {
 			$scope.mainSwitchClass = 'balanced';
 			$scope.powerbuttonClass = 'button button-full button-balanced';	
+		} else {
+			determineStateOfMainSwitch();
 		}
 		
 	}
@@ -107,6 +95,13 @@ angular.module('starter.controllers', ['socialShareModule','ngCordova.plugins.da
 		toggleMainSwitch(val);
 	}
 	
+	function determineStateOfMainSwitch() {
+		if( $scope.livingClass == false && $scope.kitchenClass == false && $scope.myVar == false) {
+			$scope.powerbuttonClass = 'button button-full button-dark';
+			$scope.mainSwitchClass = '';
+		}
+	}
+	
 	$scope.openCloseGarageDoor = function() {
 
 		console.log('closing garage is: ');
@@ -118,25 +113,7 @@ angular.module('starter.controllers', ['socialShareModule','ngCordova.plugins.da
 	}
 	
 	
-	function roomCommand(room, cmd) {
-
-		console.log('Rooom Cmd is: ' ,room+ ',' + cmd);
-		substationService.sendSignal(room,cmd).then(function(data) {
-			console.log('call succeeded',data);
-		}, function(err) {
-			console.log('call failed', err)
-		});
-		
-		if(room === 'kitchen') {
-			$scope.kitchenClass= (cmd == 'on') ? 'balanced' : '';
-		}
-		if(room === 'bedroom') {
-			$scope.myVar= (cmd == 'on') ? 'balanced' : '';
-		}
-		toggleMainSwitch((cmd == 'on')?true:false);	
 	
-		
-	}
 	////////// Map //////////
   
 
@@ -216,6 +193,26 @@ angular.module('starter.controllers', ['socialShareModule','ngCordova.plugins.da
       };
       recognition.start();
     };
+    
+    function roomCommand(room, cmd) {
+
+		console.log('Rooom Cmd is: ' ,room+ ',' + cmd);
+		substationService.sendSignal(room,cmd).then(function(data) {
+			console.log('call succeeded',data);
+		}, function(err) {
+			console.log('call failed', err)
+		});
+		
+		if(room === 'kitchen') {
+			$scope.kitchenClass= (cmd == 'on') ? 'balanced' : '';
+		}
+		if(room === 'bedroom') {
+			$scope.myVar= (cmd == 'on') ? 'balanced' : '';
+		}
+		toggleMainSwitch((cmd == 'on')?true:false);	
+	
+		
+	}
     
     function determineCommand(str){
 
