@@ -228,7 +228,7 @@ angular.module('starter.controllers', ['socialShareModule','ngCordova.plugins.da
         
         ///
         
-        if(str.includes("turn kitchen on") || str.includes("kitchen on") || str.includes("kitchen lights on") || str.includes("on kitchen lights") || str.includes("turn on kitchen lights") || str.includes("turn kitchen lights on")) {
+        if(str.toLowerCase().includes("turn kitchen on") || str.toLowerCase().includes("kitchen on") || str.toLowerCase().includes("kitchen lights on") || str.toLowerCase().includes("on kitchen lights") || str.toLowerCase().includes("turn on kitchen lights") || str.toLowerCase().includes("turn kitchen lights on")) {
         	roomCommand('kitchen','on');
       	  confrimComman('kitchen lights on');
         }
